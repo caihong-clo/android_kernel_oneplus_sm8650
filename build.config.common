@@ -5,6 +5,9 @@ KMI_GENERATION=11
 LLVM=1
 DEPMOD=depmod
 CLANG_PREBUILT_BIN=prebuilts/clang/host/linux-x86/clang-${CLANG_VERSION}/bin
+# caihong: the clang 22 of the Android tree, as passed to bazel by
+# build_with_bazel.py (--user_clang_toolchain)
+CLANG_PREBUILT_BIN=../prebuilts/clang/host/linux-x86/clang-r584948/bin
 BUILDTOOLS_PREBUILT_BIN=build/kernel/build-tools/path/linux-x86
 DTC=${ROOT_DIR}/${BUILDTOOLS_PREBUILT_BIN}/dtc
 

@@ -314,6 +314,12 @@ class BazelBuilder:
             "--notrim",
             "--nokmi_symbol_list_strict_mode",
             "--nokmi_symbol_list_violations_check",
+            # Build with the clang of the Android tree, like the make based
+            # caihong kernel (clang 22, r584948), instead of the clang 17 of
+            # kernel_platform. build.config.common matches it for the
+            # modules built outside of bazel.
+            "--user_clang_toolchain={}".format(os.path.realpath(os.path.join(
+                self.workspace, "..", "prebuilts/clang/host/linux-x86/clang-r584948"))),
         ])
 
         if self.dry_run:
