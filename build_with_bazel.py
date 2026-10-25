@@ -307,6 +307,13 @@ class BazelBuilder:
         self.user_opts.extend([
             "--user_kmi_symbol_lists=//msm-kernel:android/abi_gki_aarch64_qcom",
             "--ignore_missing_projects",
+            # Export every symbol like the make based caihong kernel did
+            # (no TRIM_UNUSED_KSYMS). The out of tree techpack and oplus
+            # modules are built later and are not covered by the KMI lists,
+            # which also still name the del_timer*() wrappers of 6.1.190.
+            "--notrim",
+            "--nokmi_symbol_list_strict_mode",
+            "--nokmi_symbol_list_violations_check",
         ])
 
         if self.dry_run:
